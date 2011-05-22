@@ -10,6 +10,7 @@
   <![endif]-->
   <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
   <link rel="stylesheet" href="css/Aristo/jquery-ui-1.8.7.custom.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/tipTip.css" type="text/css" media="screen, projection">
   <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
   <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" type="text/css" >
   <!--[if IE]>
@@ -18,7 +19,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
   <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-  <script src="js/jquery.simpletip-1.3.1.pack.js"></script>
+  <script src="js/jquery.tipTip.minified.js"></script>
   <script src="js/jquery.cookie.js"></script>
   
 </head>
@@ -26,7 +27,7 @@
 <body id="home"> 
   <div class="container xshowgrid">
     <div class="span-12 quiet" id="greeting"></div>
-    <div class="span-12 last" style="text-align: right;">&nbsp;<a href="http://globalhealth.duke.edu/chpir"><img src="images/chpir.png"></a></div>
+    <div class="span-12 last" style="text-align: right;">&nbsp;<a href="http://globalhealth.duke.edu/chpir" title="Go to the CHPIR website"><img src="images/chpir.png"></a></div>
     <hr>
     <div class="span-16 border bottompad">
       <div class="loud large">Search</div>
@@ -44,7 +45,7 @@
     </div>
     <div class="span-8 last bottompad">
       <div class="loud large">Quick links</div>
-      <div>Admin: <a href="http://work.duke.edu">Duke@Work</a></div>
+      <div>Admin: <a href="http://work.duke.edu">Duke@Work</a> / <a href="https://eirb.mc.duke.edu">eIRB</a></div>
       <div>Computers: <a href="http://globalhealth.duke.edu/ITRequest">IT ticket</a> / <a href="http://www.oit.duke.edu/comp-print/software/license/index.php">Download Duke software</a></div>
     </div>
     <hr>
@@ -68,14 +69,14 @@
       <div>Check out the <a href="http://help.37signals.com/basecamp">Basecamp help</a> and <a href="http://help.37signals.com/campfire">Campfire help</a> pages. Still stuck, or need new projects or users? <a href="javascript:UserVoice.showPopupWidget();" title="Open feedback & support dialog (powered by UserVoice)">Talk to an admin</a>.</div>
     </div>
     <hr>
-    <div class="span-16 border">
+    <div class="span-16 bottompad border">
       <div class="loud large span-16">Web applications</div>
-      <div class="span-2 append-1"><div class="tip" data-info="Gmail"><a href="https://gmail.com"><img src="images/gmail70.png"></a></div></div>
-        <div class="span-2 append-1"><div class="tip" data-info="Google Calendar"><a href="https://calendar.google.com"><img src="images/gcal70.png"></a></div></div>
-        <div class="span-2 append-1"><div class="tip" data-info="Google Docs"><a href="https://docs.google.com"><img src="images/docs70.png"></a></div></div>
-        <div class="span-2 append-1"><div class="tip" data-info="Tungle - Schedule meetings quickly and for free"><a href="http://tungle.me"><img src="images/tungle70.png"></a></div></div>
+      <div class="span-2 append-1"><div class="tip" title="Gmail"><a href="https://gmail.com"><img src="images/gmail70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" title="Google Calendar"><a href="https://calendar.google.com"><img src="images/gcal70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" title="Google Docs"><a href="https://docs.google.com"><img src="images/docs70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" title="Tungle - Schedule meetings quickly (free service)"><a href="http://tungle.me"><img src="images/tungle70.png"></a></div></div>
     </div>
-    <div class="span-8 last">
+    <div class="span-8 bottompad last">
       <div id="custom-links-container">
         <div class="large"><span id="custom-links-name"></span> <span style="font-size: 0.7em; color: #ccc;">(<a href="#" onclick="changeCustomLinks();" style="color: #ccc">change</a>)</span></div>
         <ul id="custom-links"></ul>
@@ -87,6 +88,8 @@
         <input type="submit" onclick="updateCustomLinks($('#change-custom-links input[name=custom-links-radio]:checked').val()); return false;" value="Save">
       </div>
     </div>
+    <hr>
+    <div class="span-24" style="text-align: center; color: #999; font-size: 0.9em;">2812 Erwin Road, Suite 403 &#x25cf; Durham, NC 27705-4594 &#x25cf; P (919) 613-5430 &#x25cf; F (919) 613-5466</div>
   </div>
 
 
@@ -99,18 +102,8 @@
     <li><input type="radio" value="${name}" name="custom-links-radio"/>${name}</li>
   </script>
 
-  <script>
+  <script type="text/javascript">
 
-    // http://stackoverflow.com/questions/18912/how-to-find-keys-of-a-hash
-    Object.prototype.keys = function ()
-    {
-      var keys = [];
-      for(var i in this) if (this.hasOwnProperty(i))
-      {
-        keys.push(i);
-      }
-      return keys;
-    }
 
 // focus on the input field for easy access...
     var input = document.getElementById ('search-text');
@@ -146,8 +139,11 @@
       {name: 'POFO instruments testing', link: 'https://chp-instruments-testing.heroku.com'},
       {name: 'POFO team', link: 'http://team.pofostudy.org'}
     ],
-    'Serach engines': [
-      {name: 'Yahoo', link: 'http://yahoo.com'}
+    'Research': [
+      {name: 'Google scholar', link: 'http://library.duke.edu/metasearch/db/id/DUK01290'},
+      {name: 'Pubmed', link: 'http://library.duke.edu/metasearch/db/id/DUK01379'},
+      {name: 'Web of Science', link: 'http://library.duke.edu/metasearch/db/id/DUK01574'},
+      {name: 'Duke Library', link: 'http://library.duke.edu'}
     ]
   };
 
@@ -156,7 +152,7 @@
     $('#change-custom-links-container').hide();
     if(set !== undefined) {
       $('#custom-links').html($("#customLinkTemplate").tmpl(links[set]));
-      $('#custom-links-name').html(defaultLinks + ' links');
+      $('#custom-links-name').html(set + ' links');
       $.cookie('chpir-start-links', set);
     }
   }
@@ -172,9 +168,10 @@
   updateCustomLinks(defaultLinks);
 
   // Fill change custom links div
-  var linkSetNames = $.map(links.keys(), function(elem, i) {
-    return {'name': elem};
-  });
+  var linkSetNames = []
+  for (var k in links) {
+    linkSetNames.push({name: k});
+  }
 
   $('#change-custom-links').html($("#changeCustomLinksTemplate").tmpl(linkSetNames));
 
@@ -182,15 +179,7 @@
 
   $(function() {
     $('#greeting').html("Happy "+getDate()+"!");
-
-    $('.tip').each(function(i, elem) {
-      $elem = $(elem);
-      $elem.simpletip({
-        content: $elem.attr('data-info'),
-        position: 'bottom'
-      });
-    })
-
+    $('.tip').tipTip();
     $( "#radio" ).buttonset();
     $("#search-submit").button();
 
