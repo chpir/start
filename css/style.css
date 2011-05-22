@@ -1,0 +1,75 @@
+body {
+  font-family: 'Didact Gothic', arial, serif;
+  margin: 0px;
+  background: #FFFFFF url('../images/bg.png') repeat-x fixed center center;
+  font-size: 0.9em;
+}
+hr {
+}
+
+.bottompad {
+  padding-bottom: 1em;
+}
+.container {
+  margin-top: 2em;
+}
+
+#greeting{
+  margin-top: 3em;
+}
+
+#search-text {
+  width: 428px;
+  font-size: 1.4em;
+  padding: 3px;
+  margin: 0;
+  height: 30px;
+  position: relative;
+  top: 2px;
+}
+#search-submit {
+  background-color: #ddd;
+  font-weight: bold;
+  height: 38px;
+}
+
+.service-link {
+  font-weight: bold;
+}
+.service-link a:link { color: #222; text-decoration: underline;}
+.service-link a:visited { color: #222; text-decoration: underline;}
+.service-link a:active { color: #222; text-decoration: underline;}
+.service-link a:hover { color: #222; text-decoration: underline;}
+
+/* jquery ui button stuff */
+.tiny-button, #search-submit {
+  font-size: 0.8em;
+  text-align: right;
+}
+.tiny-button .ui-button .ui-button-text {
+  padding: 5px;
+}
+.ui-button-text, #search-submit {
+   font-size: inherit !important;
+} 
+/* END jquery ui button stuff */
+
+
+/* change blueprint */
+.large {
+  margin-bottom: 0;
+}
+
+
+.tooltip{
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 3;
+   display: none;
+   max-width: 100px;
+   font-size: 0.8em;
+   font-weight: bold;
+   color: #999;
+}
+

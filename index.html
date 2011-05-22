@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CHPIR Start Page</title>
+  <link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+  <![endif]-->
+  <link rel="stylesheet" href="css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/Aristo/jquery-ui-1.8.7.custom.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen, projection">
+  <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" type="text/css" >
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+  <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+  <script src="js/jquery.simpletip-1.3.1.pack.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  
+</head>
+
+<body id="home"> 
+  <div class="container xshowgrid">
+    <div class="span-12 quiet" id="greeting"></div>
+    <div class="span-12 last" style="text-align: right;">&nbsp;<a href="http://globalhealth.duke.edu/chpir"><img src="images/chpir.png"></a></div>
+    <hr>
+    <div class="span-16 border bottompad">
+      <div class="loud large">Search</div>
+      <form id="search">
+        <div class="span-4">
+          <div id="radio" class="tiny-button" style="margin-top: 0.5em;">
+            <input type="radio" id="google" value="google" name="radio" checked="checked"/><label for="google">Google</label>
+            <input type="radio" id="duke" value="duke" name="radio" /><label for="duke">duke.edu</label>
+          </div>
+        </div>
+        <div class="span-12 last">
+          <input type="text" id="search-text"><input type="submit" id="search-submit" value="Go">
+        </div>
+      </form>
+    </div>
+    <div class="span-8 last bottompad">
+      <div class="loud large">Quick links</div>
+      <div>Admin: <a href="http://work.duke.edu">Duke@Work</a></div>
+      <div>Computers: <a href="http://globalhealth.duke.edu/ITRequest">IT ticket</a> / <a href="http://www.oit.duke.edu/comp-print/software/license/index.php">Download Duke software</a></div>
+    </div>
+    <hr>
+    <div class="span-24 loud large">Productivity & collaboration</div>
+    <div class="span-8 bottompad">
+      <div class="span-2"><a href="https://dukechp.basecamphq.com"><img src="images/basecamp70.png"></a></div>
+      <div class="span-6 last">
+        <div class="service-link"><a href="https://dukechp.basecamphq.com">Basecamp</a></div>
+        <div>Project management, etc.</div>
+        <div class="quiet">Your todos: <a href="https://dukechp.basecamphq.com/todo_lists?due_frame=today">due today</a> / <a href="https://dukechp.basecamphq.com/todo_lists?due_frame=past">overdue</a><br>Your milestones: <a href="https://dukechp.basecamphq.com/milestones/responsibilities">all projects</a></div>
+      </div>
+    </div>
+    <div class="span-8 bottompad">
+      <div class="span-2"><a href="https://dukechp.campfirenow.com"><img src="images/campfire70.png"></a></div>
+      <div class="span-6 last">
+        <div class="service-link"><a href="https://dukechp.campfirenow.com">Campfire</a></div><div>Web-based group chat, no software to install.</div>
+      </div>
+    </div>
+    <div class="span-8 bottompad last" style="color: #999;">
+      <div style="font-weight: bold">Need help with Basecamp or Campfire?</div>
+      <div>Check out the <a href="http://help.37signals.com/basecamp">Basecamp help</a> and <a href="http://help.37signals.com/campfire">Campfire help</a> pages. Still stuck, or need new projects or users? <a href="javascript:UserVoice.showPopupWidget();" title="Open feedback & support dialog (powered by UserVoice)">Talk to an admin</a>.</div>
+    </div>
+    <hr>
+    <div class="span-16 border">
+      <div class="loud large span-16">Web applications</div>
+      <div class="span-2 append-1"><div class="tip" data-info="Gmail"><a href="https://gmail.com"><img src="images/gmail70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" data-info="Google Calendar"><a href="https://calendar.google.com"><img src="images/gcal70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" data-info="Google Docs"><a href="https://docs.google.com"><img src="images/docs70.png"></a></div></div>
+        <div class="span-2 append-1"><div class="tip" data-info="Tungle - Schedule meetings quickly and for free"><a href="http://tungle.me"><img src="images/tungle70.png"></a></div></div>
+    </div>
+    <div class="span-8 last">
+      <div id="custom-links-container">
+        <div class="large"><span id="custom-links-name"></span> <span style="font-size: 0.7em; color: #ccc;">(<a href="#" onclick="changeCustomLinks();" style="color: #ccc">change</a>)</span></div>
+        <ul id="custom-links"></ul>
+      </div>
+      <div id="change-custom-links-container" style="display: none;">
+        <div class="large">Change custom links</div>
+        <ul id="change-custom-links">
+        </ul>
+        <input type="submit" onclick="updateCustomLinks($('#change-custom-links input[name=custom-links-radio]:checked').val()); return false;" value="Save">
+      </div>
+    </div>
+  </div>
+
+
+
+  <script id="customLinkTemplate" type="text/x-jquery-tmpl">
+    <li><a href="${link}">${name}</a></li>
+  </script>
+
+  <script id="changeCustomLinksTemplate" type="text/x-jquery-tmpl">
+    <li><input type="radio" value="${name}" name="custom-links-radio"/>${name}</li>
+  </script>
+
+  <script>
+
+    // http://stackoverflow.com/questions/18912/how-to-find-keys-of-a-hash
+    Object.prototype.keys = function ()
+    {
+      var keys = [];
+      for(var i in this) if (this.hasOwnProperty(i))
+      {
+        keys.push(i);
+      }
+      return keys;
+    }
+
+// focus on the input field for easy access...
+    var input = document.getElementById ('search-text');
+    input.focus ();
+    // ...but if someone wishes to go back in their history, let them!
+    document.onkeydown = function (e) {
+      if (!e) {
+        var e = window.event;
+      }
+      if (e.keyCode === 8 && !input.value) {
+        history.back();
+      }
+    };
+
+
+  function getDate() {
+    var strDay = "";
+    switch(new Date().getDay()) {
+      case 0: strDay = 'Sunday'; break;
+      case 1: strDay = 'Monday'; break;
+      case 2: strDay = 'Tuesday'; break;
+      case 3: strDay = 'Wednesday'; break;
+      case 4: strDay = 'Thursday'; break;
+      case 5: strDay = 'Friday'; break;
+      case 6: strDay = 'Saturday'; break;
+    }
+    return strDay;
+  }
+
+  var links = {
+    'International sector': [
+      {name: 'POFO instruments', link: 'https://chp-instruments.heroku.com'},
+      {name: 'POFO instruments testing', link: 'https://chp-instruments-testing.heroku.com'},
+      {name: 'POFO team', link: 'http://team.pofostudy.org'}
+    ],
+    'Serach engines': [
+      {name: 'Yahoo', link: 'http://yahoo.com'}
+    ]
+  };
+
+  function updateCustomLinks(set) {
+    $('#custom-links-container').show();
+    $('#change-custom-links-container').hide();
+    if(set !== undefined) {
+      $('#custom-links').html($("#customLinkTemplate").tmpl(links[set]));
+      $('#custom-links-name').html(defaultLinks + ' links');
+      $.cookie('chpir-start-links', set);
+    }
+  }
+
+  function changeCustomLinks() {
+    $('#custom-links-container').hide();
+    $('#change-custom-links-container').show();
+  }
+
+  // Defaults for custom links
+  var defaultLinks = $.cookie('chpir-start-links');
+  defaultLinks = (defaultLinks === null ? 'International sector' : defaultLinks);
+  updateCustomLinks(defaultLinks);
+
+  // Fill change custom links div
+  var linkSetNames = $.map(links.keys(), function(elem, i) {
+    return {'name': elem};
+  });
+
+  $('#change-custom-links').html($("#changeCustomLinksTemplate").tmpl(linkSetNames));
+
+
+
+  $(function() {
+    $('#greeting').html("Happy "+getDate()+"!");
+
+    $('.tip').each(function(i, elem) {
+      $elem = $(elem);
+      $elem.simpletip({
+        content: $elem.attr('data-info'),
+        position: 'bottom'
+      });
+    })
+
+    $( "#radio" ).buttonset();
+    $("#search-submit").button();
+
+    $('#search').submit(function(e) {
+      $form = $(e.target);
+      var type = $form.find('input[name=radio]:checked').val();
+      var loc;
+      if(type == "google") {
+        loc = "https://www.google.com/search?q=";
+      }
+      else {
+        loc = "http://www.duke.edu/search/?q=";
+      }
+      window.location = loc + escape($form.find('input:text').val());
+      return false;
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/S2MaqKFHSezDN4LAITqA.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script>
+
+</body>
+</html>
